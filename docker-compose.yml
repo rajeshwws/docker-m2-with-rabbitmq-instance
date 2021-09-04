@@ -1,0 +1,41 @@
+magento2:
+  container_name: magento2
+  build: .
+  ports:
+    - 80:80
+  environment:
+    APPLICATION_ENV: development
+    MAGENTO_BASE_URL: ${MAGENTO_BASE_URL}
+  command: sh /init.sh
+  links:
+    - magento2_mysql
+  volumes:
+    - ./config-files/init.sh:/init.sh
+    - ./config-files/nginx/vhost.conf:/etc/nginx/sites-enabled/default
+    - ./config-files/nginx/php.ini:/etc/php/7.3/fpm/php.ini
+    - ./:/data/project
+    - ./config-files/auth.json:/root/.composer/auth.json
+    - ./var/log/nginx:/var/log/nginx
+    - ./var/log/php-fpm:/var/log/php-fpm
+    - /root/.bash_history
+
+magento2_mysql:
+  container_name: magento2_mysql
+  image: mysql:5.7
+  ports:
+    - 3306:3306
+  environment:
+    MYSQL_DATABASE: "magento2"
+    MYSQL_ROOT_PASSWORD: ""
+    MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+  volumes:
+    - ./config-files/mysql/my.cnf:/etc/mysql/conf.d/my.cnf
+    - ./data/mysql:/var/lib/mysql
+  command: bash -c "chmod 644 /etc/mysql/conf.d/*.cnf && /entrypoint.sh mysqld"
+
+rabbitmq_server:
+  container_name: rabbitmq_server
+  image: rabbitmq:3-management-alpine
+  ports:
+    - 5672:5672
+    - 15672:15672
