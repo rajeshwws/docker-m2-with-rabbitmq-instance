@@ -47,3 +47,4 @@ password: `admin123`
 
 Just navigate to http://localhost:15672/ with credentials guest/guest to see the dashboard.
 
+![Alt text](https://github.com/rajeshwws/docker-m2-with-rabbitmq-instance/blob/main/rabbitmq.jpg)
