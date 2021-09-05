@@ -1,8 +1,8 @@
-#Docker Containers - Magento 2.3 using rabbitmq 
+# Docker Containers - Magento 2.3 using rabbitmq
 
-This Docker container is build with support to `Nginx`, `PHP 5.7` (built with PHP FPM) and `MySQL 5.7`. 
+This Docker container is build with support to `Nginx`, `PHP 5.7` (built with PHP FPM) and `MySQL 5.7`.
 
-# Installation Instruction
+### Installation Instruction
 
 Just clone the files into your project folder and follow the following instruction .
 
@@ -26,9 +26,13 @@ If you need to access the container terminal, use the following commands:
 
 •	to connect to a container as local user (1000): docker exec -it --user local {container_name} bash
 
+![Alt text](https://github.com/rajeshwws/docker-m2-with-rabbitmq-instance/blob/main/contrainers.jpg)
+
 ### Accessing Magento frontend
 
 Just navigate to http://magento2.local/
+
+![Alt text](https://github.com/rajeshwws/docker-m2-with-rabbitmq-instance/blob/main/frontend.jpg)
 
 ### Accessing Magento backend
 
@@ -37,6 +41,9 @@ Just navigate to http://magento2.local/admin and access the panel with these cre
 username: `admin`
 password: `admin123`
 
+![Alt text](https://github.com/rajeshwws/docker-m2-with-rabbitmq-instance/blob/main/backend.jpg)
+
 ### Accessing RabbitMQ
 
 Just navigate to http://localhost:15672/ with credentials guest/guest to see the dashboard.
+
